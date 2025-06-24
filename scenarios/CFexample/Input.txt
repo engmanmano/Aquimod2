@@ -1,0 +1,23 @@
+Component IDs
+3 0 0 
+
+Simulation mode
+s
+
+Monte Carlo parameters
+1e5 0.1 1000 g
+
+SCE-UA parameters
+-1 -1 -1 -1 s
+
+Evaluation parameters
+1 g
+
+Objective function and parameters
+1
+
+Spin-up period
+365
+
+Write model output files
+Y Y Y
