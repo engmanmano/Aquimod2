@@ -47,3 +47,38 @@ Plots a time series from a DataFrame, typically the simulated groundwater level 
 ---
 
 > 📌 These functions are designed to be reusable across multiple scenarios during calibration, evaluation, or post-processing.
+
+## interactive_component_plot(df, exclude=["Day", "Month", "Year", "Date"])
+Launches an interactive dropdown to select and plot columns from a simulation output DataFrame.
+
+Excludes non-data columns like date fields by default
+
+Uses plot_gwl_results() internally
+
+Built with ipywidgets for Jupyter interactivity
+
+
+## get_input_value(input_txt_path, keyword)
+Retrieves the parameter string that follows a keyword in Input.txt.
+
+Useful for checking current simulation mode, flags, or any other setting
+
+Returns the line as a clean string
+
+
+## summarize_input_file(input_txt_path, fields=None)
+Displays a summary of selected configuration fields from Input.txt.
+
+By default, includes simulation mode, calibration parameters, objective function, output flags, etc.
+
+Accepts a custom list of fields as well
+
+
+## interactive_file_plot(scenario_path)
+Interactive tool that allows users to select and plot data from any .out file in the scenario’s Output/ folder.
+
+First dropdown: choose the output file
+
+Second dropdown: choose which column to plot
+
+Automatically adds a Date column if Day, Month, Year are present

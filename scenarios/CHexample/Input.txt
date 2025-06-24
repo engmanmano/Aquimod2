@@ -2,7 +2,7 @@ Component IDs
 1 1 1
 
 Simulation mode
-e
+m
 
 Monte Carlo parameters
 100000 0.7 1000 g
