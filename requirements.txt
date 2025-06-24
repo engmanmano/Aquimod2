@@ -1,0 +1,11 @@
+pandas
+matplotlib
+selenium
+cdsapi
+jupyterlab
+
+# numpy
+# requests
+# openpyxl
+# pyproj
+
