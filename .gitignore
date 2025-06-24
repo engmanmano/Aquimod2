@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# AquiMod Outputs
+Output/
+*.out
+*.log
+*.tmp
+*.bak
+*.dat
+
+# System
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Virtual Environments
+.env/
+.venv/
+ENV/
+venv/
+
+# Logs or private config
+*.ini
+*.cfg
+*.env
+
+# ZIPs and datasets
+*.zip
+*.nc
+*.hdf
+*.csv
+*.xlsx
+
+
+# Ignore folders for old or temp scenarios
+scenarios/*/Output/
+scenarios/*/temp*/
