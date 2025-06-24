@@ -14,7 +14,7 @@ def run_aquimod2(exe_path, working_directory):
 
     print(f"Running AquiMod2 in: {working_directory}")
     result = subprocess.run(
-        [exe_path],
+        [exe_path, working_directory],
         cwd=working_directory,
         capture_output=True,
         text=True
@@ -28,29 +28,57 @@ def run_aquimod2(exe_path, working_directory):
         print("Simulation completed successfully.")
         print("Output:", result.stdout)
 
-def load_gwl_output(scenario_path):
+
+def load_component_gwl_output(scenario_path, component_file="Q3K3S1_TimeSeries1.out"):
     """
-    Load groundwater level simulation results from Output/GWL_sim.out
+    Load GWL time series from a component-specific TimeSeries1.out file.
+    Default is Q3K3S1_TimeSeries1.out
     """
-    file_path = os.path.join(scenario_path, "Output", "GWL_sim.out")
+    file_path = os.path.join(scenario_path, "Output", component_file)
     if not os.path.exists(file_path):
-        raise FileNotFoundError("Output file not found: GWL_sim.out")
+        raise FileNotFoundError(f"Output file not found: {component_file}")
 
-    df = pd.read_csv(file_path, delim_whitespace=True, header=None,
-                     names=["DAY", "MONTH", "YEAR", "GWL_sim"])
+    df = pd.read_csv(file_path, sep=r'\s+')
+    df["Date"] = pd.to_datetime(df[["Year", "Month", "Day"]])
     return df
+    
 
-def plot_gwl_results(df):
+
+def plot_gwl_results(df, column="GWL(m)"):
     """
-    Plot groundwater level simulation results.
+    Plot groundwater level or other selected variable from component output.
     """
-    dates = pd.to_datetime(df[["YEAR", "MONTH", "DAY"]])
     plt.figure(figsize=(10, 4))
-    plt.plot(dates, df["GWL_sim"], label="Simulated GWL")
+    plt.plot(df["Date"], df[column], label=f"Simulated {column}", color="royalblue")
     plt.xlabel("Date")
-    plt.ylabel("Groundwater Level (m)")
-    plt.title("Simulated Groundwater Levels")
+    plt.ylabel(column)
+    plt.title(f"Simulated {column} Over Time")
     plt.grid(True)
     plt.legend()
     plt.tight_layout()
     plt.show()
+
+
+def update_output_flags(input_txt_path, new_flags="N Y Y"):
+    """
+    Updates the 'Write model output files' line in Input.txt
+    
+    Parameters:
+    - input_txt_path (str): Full path to Input.txt
+    - new_flags (str): New flag string, e.g. 'N Y Y'
+    """
+    with open(input_txt_path, "r") as f:
+        lines = f.readlines()
+
+    for i in range(len(lines)):
+        if lines[i].strip() == "Write model output files":
+            lines[i + 1] = new_flags + "\n"
+            break
+    else:
+        raise ValueError("Could not find 'Write model output files' block in Input.txt")
+
+    with open(input_txt_path, "w") as f:
+        f.writelines(lines)
+
+    print(f"Updated output flags to: {new_flags}")
+

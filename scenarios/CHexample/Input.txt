@@ -20,4 +20,4 @@ Spin-up period
 6
 
 Write model output files
-N N Y
+Y Y Y
