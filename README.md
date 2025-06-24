@@ -17,18 +17,17 @@ Aquimod2/
 │ └── aquimod2_pipeline.ipynb
 ├── utils/ # Python functions (input generation, run, parse)
 │ └── aquimod2_helpers.py
-├── scenarios/ # Model folders per scenario
-│ └── scenario_001/
-│ ├── Input.txt
-│ ├── Observations.txt
-│ ├── Calibration/
-│ ├── Evaluation/
-│ └── Output/
+├── scenarios/ # Model folders for active simulations
+│ ├── CHexample/
+│ └── CFexample/
+├── examples/ # Reference inputs from AquiMod manual
+│ ├── CHexample/
+│ └── CFexample/
 ├── selenium_bot/ # Scripts to automate downloading sensor data
 │ └── holykell_downloader.py
 ├── data/ # Optional: raw data inputs or examples
-├── README.md
-└── requirements.txt # Python dependencies
+├── requirements.txt
+└── README.md
 
 
 🚀 How to Use
