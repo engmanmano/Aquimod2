@@ -46,7 +46,7 @@ Plots a time series from a DataFrame, typically the simulated groundwater level 
 
 ---
 
-> 📌 These functions are designed to be reusable across multiple scenarios during calibration, evaluation, or post-processing.
+> These functions are designed to be reusable across multiple scenarios during calibration, evaluation, or post-processing.
 
 ## interactive_component_plot(df, exclude=["Day", "Month", "Year", "Date"])
 Launches an interactive dropdown to select and plot columns from a simulation output DataFrame.

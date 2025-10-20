@@ -4,18 +4,18 @@ This document provides an overview and interpretation guide for the most commonl
 
 ---
 
-## 📁 Output File Overview
+## Output File Overview
 
 Output files are written to the `Output/` folder of each scenario, depending on simulation mode and `Input.txt` flags.
 
-### 🧪 Evaluation Mode (`e`)
+### Evaluation Mode (`e`)
 
 Produces:
 
 * `fit_eval.out`: Performance score per parameter set
 * `*_TimeSeries1.out`: Time series for each model component (e.g. `Q3K3S1_TimeSeries1.out`)
 
-### 🔁 Calibration Modes (`m`, `s`)
+### Calibration Modes (`m`, `s`)
 
 Produces:
 
@@ -24,7 +24,7 @@ Produces:
 
 ---
 
-## 📊 Time Series Output (`*_TimeSeries1.out`)
+## Time Series Output (`*_TimeSeries1.out`)
 
 Each file corresponds to one component (soil, aquifer, recharge) for one parameter set.
 
@@ -38,7 +38,7 @@ Each file corresponds to one component (soil, aquifer, recharge) for one paramet
 | `Q_1(m3/d)`          | Discharge from bottom aquifer layer (z₁) |
 | `GWL(m)`             | Simulated groundwater level (meters)     |
 
-📌 Not all components produce the same variables. For example:
+Not all components produce the same variables. For example:
 
 * Aquifer component → includes `Q_*`, `GWL`
 * Recharge component → may produce head levels, recharge flux
@@ -51,7 +51,7 @@ Each file corresponds to one component (soil, aquifer, recharge) for one paramet
 
 ---
 
-## 📈 `fit_eval.out` / `fit_calib.out`
+## `fit_eval.out` / `fit_calib.out`
 
 Text file listing objective function scores for each parameter set.
 
@@ -64,7 +64,7 @@ Used to evaluate how well each parameter set matches observed data.
 
 ---
 
-## 📄 Calibration Outputs (`*_calib.out`)
+## Calibration Outputs (`*_calib.out`)
 
 Match the structure of evaluation input files (`*_eval.txt`) and contain the sampled/calibrated parameter values.
 
@@ -73,7 +73,7 @@ Match the structure of evaluation input files (`*_eval.txt`) and contain the sam
 
 ---
 
-## 📌 Tips for Interpretation
+## Tips for Interpretation
 
 * Compare `GWL(m)` in simulated vs observed to assess accuracy
 * Review `Q_*` trends to understand aquifer dynamics across layers
@@ -81,4 +81,4 @@ Match the structure of evaluation input files (`*_eval.txt`) and contain the sam
 
 ---
 
-📖 Based on: *AquiMod2 User Manual (2024)* and verified output behavior
+eto rin ay based on: *AquiMod2 User Manual (2024)* and verified output behavior
